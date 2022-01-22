@@ -1,3 +1,3 @@
 import type { WithChildren } from 'interfaces/utils'
 
-export type ThemeProviderProps = WithChildren
+export type SidebarProviderProps = WithChildren
