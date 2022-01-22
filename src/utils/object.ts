@@ -6,7 +6,7 @@ export const isObject = <T>(item: T): boolean => {
   return false
 }
 
-export const mergeDeep = <
+export const deepMerge = <
   T extends Record<string, unknown>,
   S extends Record<string, unknown>[]
 >(target: T, ...sources: S): T & S[number] => {
@@ -26,7 +26,7 @@ export const mergeDeep = <
         }
 
         // @ts-expect-error
-        mergeDeep(target[key], source[key])
+        deepMerge(target[key], source[key])
       } else {
         Object.assign(target, {
           [key]: source[key],
@@ -35,5 +35,5 @@ export const mergeDeep = <
     }
   }
 
-  return mergeDeep(target, ...sources)
+  return deepMerge(target, ...sources)
 }

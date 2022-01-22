@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+
 import { useSidebar } from 'contexts/sidebar'
 
 import { SidebarActionTypes } from 'providers/sidebar/actions'
@@ -7,8 +9,18 @@ import * as S from './sidebar.styles'
 export const Sidebar = () => {
   const { state, dispatch } = useSidebar()
 
+  const wrapperClassNames = useMemo(() => {
+    const c = []
+
+    if (state.isOpen) {
+      c.push('sidebar--opened')
+    }
+
+    return c.join(' ')
+  }, [state.isOpen])
+
   const wrapperProps = {
-    className: state.isOpen ? 'sidebar--opened' : '',
+    className: wrapperClassNames,
   }
 
   return (

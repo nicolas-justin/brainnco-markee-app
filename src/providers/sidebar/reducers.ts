@@ -3,13 +3,13 @@ import type { SidebarContextState } from 'contexts/sidebar/sidebar.types'
 
 import { SidebarActions, SidebarActionTypes } from './actions'
 
-import { mergeDeep } from 'utils/object'
+import { deepMerge } from 'utils/object'
 
 const createNewState = <T extends SidebarContextState>(
   currentState: T,
   newState: RecursivePartial<T>,
 ): T => {
-  return mergeDeep(currentState, newState)
+  return deepMerge({} as T, currentState, newState)
 }
 
 export const sidebarReducer = (
